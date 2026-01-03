@@ -12,7 +12,7 @@
 //     /* ---------------- FETCH COMMENTS ---------------- */
 //     const fetchComments = async () => {
 //         try {
-//             const res = await axios.get(`http://localhost:6300/api/reels/reel/${reelId}`);
+//             const res = await axios.get(`https://vizit-backend-hubw.onrender.com/api/reels/reel/${reelId}`);
 //             setComments(res.data.reel.comments || []);
 //         } catch (err) {
 //             console.error("FETCH COMMENTS ERROR:", err);
@@ -28,7 +28,7 @@
 //         if (!newComment.trim() || !user?._id) return;
 
 //         try {
-//             await axios.post(`http://localhost:6300/api/reels/reel/${reelId}/comment`, {
+//             await axios.post(`https://vizit-backend-hubw.onrender.com/api/reels/reel/${reelId}/comment`, {
 //                 id: user._id,
 //                 name: user.name,
 //                 email: user.email,
@@ -55,7 +55,7 @@
 //         try {
 //             // CORRECTED: Changed from /api/like/reel/ to /api/reels/reel/
 //             await axios.put(
-//                 `http://localhost:6300/api/like/reel/${reelId}/comment/${commentId}/like`,
+//                 `https://vizit-backend-hubw.onrender.com/api/like/reel/${reelId}/comment/${commentId}/like`,
 //                 { id: user._id }
 //             );
 //             fetchComments();
@@ -208,7 +208,7 @@ const ReelComments = ({ reelId, commentCount, onClose, user }) => {
     const fetchComments = async () => {
         try {
             const res = await axios.get(
-                `http://localhost:6300/api/reels/reel/${reelId}`
+                `https://vizit-backend-hubw.onrender.com/api/reels/reel/${reelId}`
             );
             setComments(res.data.reel.comments || []);
         } catch (err) {
@@ -250,7 +250,7 @@ const ReelComments = ({ reelId, commentCount, onClose, user }) => {
 
         try {
             await axios.post(
-                `http://localhost:6300/api/reels/reel/${reelId}/comment`,
+                `https://vizit-backend-hubw.onrender.com/api/reels/reel/${reelId}/comment`,
                 {
                     id: user._id,
                     name: user.name,
@@ -273,7 +273,7 @@ const ReelComments = ({ reelId, commentCount, onClose, user }) => {
 
         try {
             await axios.put(
-                `http://localhost:6300/api/like/reel/${reelId}/comment/${commentId}/like`,
+                `https://vizit-backend-hubw.onrender.com/api/like/reel/${reelId}/comment/${commentId}/like`,
                 { id: user._id }
             );
             // ❌ NO fetchComments here

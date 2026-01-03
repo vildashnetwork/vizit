@@ -27,7 +27,7 @@ const ReelsContainer = ({ setActiveTab }) => {
                 }
 
                 const data = await axios.get(
-                    `http://localhost:6300/api/owner/decode/token/owner`,
+                    `https://vizit-backend-hubw.onrender.com/api/owner/decode/token/owner`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -49,7 +49,7 @@ const ReelsContainer = ({ setActiveTab }) => {
 
         const fetchreels = async () => {
             try {
-                const res = await axios.get("http://localhost:6300/api/reels/reels")
+                const res = await axios.get("https://vizit-backend-hubw.onrender.com/api/reels/reels")
                 if (res.status == 200) {
                     setReels(res.data.reels)
                 } else {
@@ -104,7 +104,7 @@ const ReelsContainer = ({ setActiveTab }) => {
     const handleLike = async (id) => {
 
         try {
-            const res = await axios.post(`http://localhost:6300/api/reels/reel/${id}/like`, {
+            const res = await axios.post(`https://vizit-backend-hubw.onrender.com/api/reels/reel/${id}/like`, {
                 id: user?._id,
                 name: user?.name,
                 email: user?.email,
