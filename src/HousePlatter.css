@@ -131,6 +131,8 @@
   background: var(--gradient-bg);
 }
 
+
+
 /* ========== HEADER ========== */
 .caviar-header {
   padding: var(--space-lg) var(--space-xl);
@@ -630,12 +632,24 @@
   background: var(--secondary-blue);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 900px;
   max-height: 90vh;
   overflow: auto;
   position: relative;
   border: 1px solid rgba(100, 255, 218, 0.2);
   box-shadow: 0 30px 60px rgba(2, 12, 27, 0.8);
+}
+
+@media (max-width: 768px) {
+  .fondue-modal-overlay {
+    padding: 0;
+  }
+
+  .fondue-modal {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
 }
 
 .fondue-close {
@@ -920,15 +934,15 @@
 }
 
 .switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: 0.4s;
-  }
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+}
 
 .switch .slider.round {
   border-radius: 34px;
@@ -944,18 +958,19 @@
   width: 40px;
   height: 20px;
 
- 
+
 }
+
 .switch input:checked+.slider {
-    background-color: #2196f3;
-  }
+  background-color: #2196f3;
+}
 
-.switch  input:checked+.slider:before {
-    transform: translateX(20px);
-  }
+.switch input:checked+.slider:before {
+  transform: translateX(20px);
+}
 
- .switch .toggle-label {
-    margin-left: 8px;
-    font-size: 0.8rem;
-    vertical-align: middle;
-  }
+.switch .toggle-label {
+  margin-left: 8px;
+  font-size: 0.8rem;
+  vertical-align: middle;
+}

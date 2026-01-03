@@ -682,6 +682,8 @@ const HousePlatter = ({ user }) => {
             {/* Selected Property Modal */}
             {selectedHouse && (
                 <div className="fondue-modal-overlay" onClick={() => setSelectedHouse(null)}>
+
+
                     <div className="fondue-modal" onClick={(e) => e.stopPropagation()}>
                         <button className="fondue-close" onClick={() => setSelectedHouse(null)}>✕</button>
 
