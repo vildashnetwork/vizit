@@ -68,7 +68,7 @@
 
 import axios from "axios";
 
-const response = await axios.get("http://localhost:6300/api/house/houses");
+const response = await axios.get("https://vizit-backend-hubw.onrender.com/api/house/houses");
 
 export const data = response.data.houses.map((house) => ({
   type: house.type,
