@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth !important;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  background-color: #f9fafb;
+  font-family: "Outfit", sans-serif;
+}
+
+.reel-container {
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.reel-container .reel-item {
+  scroll-snap-align: start;
+}
+
+.fade-in {
+  -webkit-animation: fadeIn 0.3s ease-in;
+          animation: fadeIn 0.3s ease-in;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=index.css.map */

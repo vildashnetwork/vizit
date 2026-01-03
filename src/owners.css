@@ -1,0 +1,52 @@
+.organismus-analytics {
+    padding: 24px;
+    background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+
+}
+
+.cellula-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.nucleus-kpi {
+    background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.chromatin-title {
+    display: block;
+    font-size: 13px;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.mitochondria-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.tissue-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 24px;
+}
+
+.histologia-card {
+    background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.epithelium-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #ffffff;
+}

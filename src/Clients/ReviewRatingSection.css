@@ -1,0 +1,933 @@
+/* =======================
+   ROOT VARIABLES & LAYOUT
+======================= */
+:root {
+    --mozart-gold: #D4AF37;
+    --beethoven-blue: #2A2D34;
+    --chopin-cream: #F5F1E6;
+    --vivaldi-green: #1B5E20;
+    --vivaldi-green-light: #2E7D32;
+    --handel-silver: #E8E8E8;
+    --tchaikovsky-bronze: #CD7F32;
+    --rachmaninoff-crimson: #8B0000;
+    --debussy-teal: #008080;
+    --debussy-teal-light: #009999;
+    --ellington-charcoal: #36454F;
+    --mozart-light: #FFF8E1;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --border-radius: 16px;
+    --border-radius-sm: 8px;
+}
+
+/* =======================
+   REVIEW SECTION - MAIN CONTAINER
+======================= */
+.mozart-review-section {
+    background: linear-gradient(135deg, var(--chopin-cream) 0%, #FFFFFF 100%);
+    border-radius: 24px;
+    padding: 48px 56px;
+    margin: 60px auto;
+    max-width: 1200px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--mozart-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.mozart-review-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--mozart-gold) 0%, transparent 70%);
+    opacity: 0.04;
+    z-index: 0;
+}
+
+/* =======================
+   HEADER & TYPOGRAPHY
+======================= */
+.mozart-review-section h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--beethoven-blue);
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--mozart-gold);
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.mozart-review-section h4::after {
+    content: '♪';
+    position: absolute;
+    right: 0;
+    bottom: -12px;
+    color: var(--mozart-gold);
+    font-size: 1.8rem;
+}
+
+/* =======================
+   ERROR MESSAGE
+======================= */
+.mozart-error {
+    background: linear-gradient(135deg, #FFE5E5 0%, #FFF5F5 100%);
+    padding: 16px 24px;
+    border-radius: 12px;
+    color: var(--rachmaninoff-crimson);
+    font-size: 1rem;
+    margin-bottom: 30px;
+    border: 1px solid #FFCDD2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+    position: relative;
+}
+
+.mozart-error .error-icon {
+    font-size: 1.2rem;
+}
+
+.mozart-error button {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: var(--rachmaninoff-crimson);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.mozart-error button:hover {
+    background: rgba(139, 0, 0, 0.1);
+}
+
+/* =======================
+   OVERALL RATING SECTION
+======================= */
+.beethoven-overall {
+    background: linear-gradient(135deg, var(--beethoven-blue) 0%, #1A1D23 100%);
+    color: var(--chopin-cream);
+    padding: 32px 48px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid var(--mozart-gold);
+    min-height: 140px;
+}
+
+.beethoven-overall::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--mozart-gold), transparent);
+}
+
+.rating-stats {
+    text-align: right;
+}
+
+.rating-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    background: linear-gradient(135deg, var(--mozart-gold), #F8E0A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.review-count {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* =======================
+   STAR DISPLAY & INPUT
+======================= */
+.chopin-stars,
+.chopin-stars-input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chopin-star-filled {
+    color: var(--mozart-gold) !important;
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+    transition: var(--transition);
+    font-size: 2.5rem !important;
+}
+
+.chopin-stars .chopin-star-filled {
+    font-size: 1.8rem !important;
+}
+
+.chopin-stars-input .clickable {
+    transition: var(--transition);
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+    font-size: 2.8rem !important;
+}
+
+.chopin-stars-input .clickable:hover {
+    background: rgba(212, 175, 55, 0.15);
+    transform: scale(1.2);
+}
+
+/* =======================
+   REVIEW FORM
+======================= */
+.vivaldi-review-form {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    margin: 50px 0;
+    border: 1px solid var(--handel-silver);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+    z-index: 1;
+    position: relative;
+}
+
+.vivaldi-review-form:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form-header h5 {
+    font-size: 1.5rem;
+    color: var(--beethoven-blue);
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Crimson Text', serif;
+}
+
+.vivaldi-review-form textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 24px;
+    border: 1px solid var(--handel-silver);
+    border-radius: 16px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 25px 0;
+    background: var(--mozart-light);
+    transition: var(--transition);
+    resize: vertical;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.vivaldi-review-form textarea:focus {
+    outline: none;
+    border-color: var(--vivaldi-green);
+    box-shadow: 0 0 0 4px rgba(27, 94, 32, 0.12);
+    background: white;
+}
+
+.form-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.vivaldi-review-form button {
+    background: linear-gradient(135deg, var(--vivaldi-green) 0%, var(--vivaldi-green-light) 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(27, 94, 32, 0.15);
+}
+
+.vivaldi-review-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(27, 94, 32, 0.25);
+}
+
+.vivaldi-review-form button .icon {
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.vivaldi-review-form button:hover .icon {
+    transform: translateX(4px);
+}
+
+.cancel-btn {
+    background: transparent !important;
+    color: var(--ellington-charcoal) !important;
+    border: 2px solid var(--handel-silver) !important;
+    box-shadow: none !important;
+}
+
+.cancel-btn:hover {
+    background: var(--handel-silver) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* =======================
+   INFORMATION MESSAGE
+======================= */
+.mozart-info {
+    background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+    padding: 24px 40px;
+    border-radius: 20px;
+    color: var(--beethoven-blue);
+    font-size: 1.15rem;
+    margin: 40px 0;
+    border: 1px solid #E1BEE7;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 1;
+}
+
+.mozart-info::before {
+    content: '🎵';
+    position: relative;
+    font-size: 1.8rem;
+    opacity: 0.8;
+}
+
+.info-icon {
+    background: var(--vivaldi-green);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.edit-existing-btn {
+    background: transparent;
+    color: var(--vivaldi-green);
+    border: 2px solid var(--vivaldi-green);
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 20px;
+}
+
+.edit-existing-btn:hover {
+    background: var(--vivaldi-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* =======================
+   REVIEW LIST & CARDS
+======================= */
+.bach-review-list {
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.bach-review-card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid var(--handel-silver);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.bach-review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.bach-review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--mozart-gold), var(--vivaldi-green));
+    border-radius: 3px 0 0 3px;
+}
+
+/* =======================
+   REVIEW HEADER
+======================= */
+.bach-review-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--mozart-gold);
+    padding: 3px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    flex-shrink: 0;
+}
+
+.header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.name-date {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.name-date h5 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--beethoven-blue);
+    margin: 0;
+    font-family: 'Crimson Text', serif;
+    line-height: 1.3;
+}
+
+.review-date {
+    color: var(--ellington-charcoal);
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.edited-badge {
+    display: inline-block;
+    background: var(--handel-silver);
+    color: var(--ellington-charcoal);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    margin-left: 12px;
+    font-style: italic;
+}
+
+.review-actions {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--handel-silver);
+    background: white;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ellington-charcoal);
+    font-size: 1.2rem;
+}
+
+.action-btn.edit:hover {
+    background: var(--vivaldi-green);
+    border-color: var(--vivaldi-green);
+    color: white;
+    transform: scale(1.1);
+}
+
+.action-btn.delete:hover {
+    background: var(--rachmaninoff-crimson);
+    border-color: var(--rachmaninoff-crimson);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* =======================
+   REVIEW TEXT
+======================= */
+.bach-review-text {
+    color: var(--ellington-charcoal);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 30px 0;
+    padding: 30px;
+    background: var(--mozart-light);
+    border-radius: 18px;
+    border-left: 4px solid var(--debussy-teal);
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.bach-review-text p {
+    margin: 0;
+}
+
+/* =======================
+   REPLIES SECTION
+======================= */
+.handel-replies-section {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid var(--handel-silver);
+}
+
+.replies-title {
+    font-size: 1.3rem;
+    color: var(--beethoven-blue);
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Crimson Text', serif;
+}
+
+.handel-reply {
+    background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin: 16px 0;
+    border-left: 4px solid var(--mozart-gold);
+    transition: var(--transition);
+    position: relative;
+}
+
+.handel-reply:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.handel-reply.admin {
+    border-left-color: var(--rachmaninoff-crimson);
+    background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
+}
+
+.handel-reply.admin:hover {
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.1);
+}
+
+.reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.handel-reply strong {
+    color: var(--beethoven-blue);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.reply-date {
+    color: var(--ellington-charcoal);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.handel-reply p {
+    color: var(--ellington-charcoal);
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* =======================
+   REPLY TOGGLE
+======================= */
+.reply-toggle {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--handel-silver);
+}
+
+.toggle-reply-btn {
+    background: transparent;
+    color: var(--debussy-teal);
+    border: 2px solid var(--debussy-teal);
+    padding: 12px 28px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.toggle-reply-btn:hover {
+    background: var(--debussy-teal);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 128, 128, 0.2);
+}
+
+/* =======================
+   REPLY BOX
+======================= */
+.debussy-reply-box {
+    margin-top: 30px;
+    padding: 28px;
+    background: linear-gradient(135deg, var(--mozart-light) 0%, #FFFFFF 100%);
+    border-radius: 20px;
+    border: 2px solid var(--debussy-teal);
+    box-shadow: 0 6px 20px rgba(0, 128, 128, 0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+.debussy-reply-box textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    border: 1px solid var(--handel-silver);
+    border-radius: 14px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    background: white;
+    transition: var(--transition);
+    resize: vertical;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.debussy-reply-box textarea:focus {
+    outline: none;
+    border-color: var(--debussy-teal-light);
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+}
+
+.reply-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.debussy-reply-box button {
+    background: var(--debussy-teal);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0, 128, 128, 0.2);
+}
+
+.debussy-reply-box button:hover {
+    background: var(--debussy-teal-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 128, 128, 0.3);
+}
+
+.debussy-reply-box button .icon {
+    font-size: 1.1rem;
+}
+
+/* =======================
+   EMPTY STATE
+======================= */
+.empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, var(--mozart-light) 0%, #FFFFFF 100%);
+    border-radius: 24px;
+    border: 2px dashed var(--mozart-gold);
+    margin: 40px 0;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    opacity: 0.6;
+}
+
+.empty-state h5 {
+    font-size: 2rem;
+    color: var(--beethoven-blue);
+    margin: 0 0 16px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.empty-state p {
+    color: var(--ellington-charcoal);
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bach-review-card:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.bach-review-card:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* =======================
+   LOADING STATE
+======================= */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-review {
+    background: linear-gradient(90deg, var(--handel-silver) 25%, var(--chopin-cream) 50%, var(--handel-silver) 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+    border-radius: 20px;
+    height: 200px;
+    margin: 20px 0;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 1024px) {
+    .mozart-review-section {
+        padding: 40px;
+        margin: 40px 20px;
+    }
+
+    .mozart-review-section h4 {
+        font-size: 2.4rem;
+    }
+
+    .beethoven-overall {
+        padding: 28px 36px;
+    }
+
+    .rating-number {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mozart-review-section {
+        padding: 32px 24px;
+        margin: 30px 16px;
+        border-radius: 20px;
+    }
+
+    .mozart-review-section h4 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .beethoven-overall {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+        padding: 28px;
+    }
+
+    .rating-stats {
+        text-align: center;
+    }
+
+    .rating-number {
+        font-size: 2.8rem;
+    }
+
+    .vivaldi-review-form {
+        padding: 30px;
+    }
+
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .vivaldi-review-form button,
+    .cancel-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .bach-review-header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .review-actions {
+        position: static;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    .mozart-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 24px;
+    }
+
+    .edit-existing-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .bach-review-text {
+        padding: 24px;
+        font-size: 1.1rem;
+    }
+
+    .handel-reply {
+        padding: 20px;
+    }
+
+    .reply-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mozart-review-section h4 {
+        font-size: 1.8rem;
+    }
+
+    .vivaldi-review-form {
+        padding: 24px;
+    }
+
+    .vivaldi-review-form textarea {
+        padding: 20px;
+    }
+
+    .bach-review-card {
+        padding: 28px;
+    }
+
+    .debussy-reply-box {
+        padding: 24px;
+    }
+}
+
+/* =======================
+   UTILITY CLASSES
+======================= */
+.clickable {
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+/* =======================
+   FONT IMPORT (Add to your HTML head)
+======================= */
+/* 
+Add this to your HTML head or main CSS file:
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+*/

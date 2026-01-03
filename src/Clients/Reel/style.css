@@ -1,0 +1,935 @@
+/* ReelsContainer.css - FULL SCREEN TIKTOK STYLE */
+.biryani-container {
+    width: 100vw;
+    height: 100vh;
+    max-width: none !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    z-index: 1000;
+}
+
+.biryani-container::-webkit-scrollbar {
+    display: none;
+}
+
+.samosa-reel-item {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    background: #000;
+}
+
+/* Video styling */
+.biryani-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #000;
+}
+
+.biryani-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Bottom gradient overlay */
+.paneer-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: linear-gradient(transparent 10%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.9) 90%);
+    padding: 20px;
+    pointer-events: none;
+}
+
+.paneer-content * {
+    pointer-events: auto;
+}
+
+/* Loading states */
+.biryani-video-shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+    background-size: 200% 100%;
+    animation: biryani-shimmer 1.5s infinite linear;
+}
+
+@keyframes biryani-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.malai-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid #ff4757;
+    border-radius: 50%;
+    animation: malai-spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes malai-spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Right side action buttons */
+.butter-chicken-actions {
+    position: absolute;
+    right: 20px;
+    bottom: 150px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.korma-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 5px;
+    text-align: center;
+}
+
+.korma-action-btn:hover {
+    transform: scale(1.1);
+}
+
+.korma-action-btn.liked {
+    color: #ff4757;
+}
+
+.korma-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.ajwain-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Audio info */
+.lassi-audio-info {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badam-icon {
+    font-size: 14px;
+}
+
+.kesar-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+}
+
+/* User header */
+.paneer-tikka-header {
+    position: absolute;
+    bottom: 100px;
+    left: 20px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100% - 100px);
+}
+
+.naan-avatar-container {
+    flex-shrink: 0;
+}
+
+.naan-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+.raita-user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tikka-username {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.masala-caption {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    line-height: 1.3;
+    color: white;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.chutney-timestamp {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.papri-follow-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.papri-follow-btn:hover {
+    background: #ff3742;
+    transform: scale(1.05);
+}
+
+/* Comments */
+/* Fixed Comments Panel Styles */
+.gulab-jamun-comments {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px 20px 0 0;
+    padding: 0;
+    z-index: 4;
+    max-height: 90vh !important;
+    display: flex;
+    flex-direction: column;
+    animation: gulab-slide-up 0.3s ease-out;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+@keyframes gulab-slide-up {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Fixed Header */
+.jalebi-comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.rasgulla-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}
+
+/* Scrollable Comments List */
+.barfi-comments-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;
+    margin: 0;
+    /* max-height: calc(60vh - 140px); */
+    height: 100vh !important;
+    /* Account for header and input height */
+}
+
+.barfi-comments-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.barfi-comments-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+.barfi-comments-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+/* Individual Comment */
+.rasmalai-comment {
+    display: flex;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.rasmalai-comment:last-child {
+    border-bottom: none;
+}
+
+.rasmalai-comment:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.kheer-comment-content {
+    flex: 1;
+}
+
+.phirni-username {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+
+.halwa-text {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.modak-comment-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.sandesh-time {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.peda-like-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.peda-like-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.ladoo-icon {
+    font-size: 12px;
+}
+
+/* Fixed Input Section */
+.chhena-add-comment {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.ghevar-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.ghevar-input:focus {
+    border-color: #ff4757;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.ghevar-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.rabri-post-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.rabri-post-btn:hover {
+    background: #ff3742;
+    transform: scale(1.05);
+}
+
+.rabri-post-btn:disabled {
+    background: rgba(255, 71, 87, 0.5);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Optional: Add close button to comments header */
+.jalebi-close-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.jalebi-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Empty State */
+.barfi-empty-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    min-height: 100px;
+}
+
+.kulfi-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.besan-text {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .gulab-jamun-comments {
+        max-height: 70vh;
+    }
+
+    .barfi-comments-list {
+        max-height: calc(70vh - 140px);
+        padding: 0 16px;
+    }
+
+    .jalebi-comments-header {
+        padding: 16px;
+    }
+
+    .chhena-add-comment {
+        padding: 16px;
+    }
+
+    .ghevar-input {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .rabri-post-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+        min-width: 70px;
+    }
+}
+
+/* Video controls overlay */
+.rogan-josh-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.samosa-reel-item:hover .rogan-josh-overlay {
+    opacity: 1;
+}
+
+.tandoori-play-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: white;
+    font-size: 30px;
+}
+
+.tandoori-play-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Loading skeletons */
+.samosa-reel-item.loading .biryani-video-container {
+    background: #111;
+}
+
+.samosa-reel-item.loading .paneer-tikka-header-shimmer {
+    height: 70px;
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+    background-size: 200% 100%;
+    animation: biryani-shimmer 1.5s infinite;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 100px;
+    left: 20px;
+    width: 60%;
+    max-width: 400px;
+}
+
+.samosa-reel-item.loading .butter-chicken-actions-shimmer {
+    height: 200px;
+    width: 50px;
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+    background-size: 200% 100%;
+    animation: biryani-shimmer 1.5s infinite;
+    border-radius: 25px;
+    position: absolute;
+    right: 20px;
+    bottom: 150px;
+}
+
+/* Scroll indicator (optional) */
+.papad-scroll-indicator {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1001;
+}
+
+.papad-scroll-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    color: white;
+    font-size: 20px;
+}
+
+.papad-scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .butter-chicken-actions {
+        right: 15px;
+        bottom: 130px;
+        gap: 20px;
+    }
+
+    .korma-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .paneer-tikka-header {
+        bottom: 130px;
+        left: 15px;
+    }
+
+    .naan-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tikka-username {
+        font-size: 15px;
+    }
+
+    .masala-caption {
+        font-size: 13px;
+    }
+
+    .lassi-audio-info {
+        bottom: 85px;
+        right: 15px;
+    }
+
+    .gulab-jamun-comments {
+        max-height: 60vh;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .butter-chicken-actions {
+        right: 10px;
+        bottom: 120px;
+        gap: 15px;
+    }
+
+    .korma-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .ajwain-count {
+        font-size: 11px;
+    }
+
+    .paneer-tikka-header {
+        bottom: 120px;
+        left: 10px;
+    }
+
+    .tikka-username {
+        font-size: 14px;
+    }
+
+    .masala-caption {
+        font-size: 12px;
+        -webkit-line-clamp: 1;
+    }
+
+    .papri-follow-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add these styles to your existing CSS file */
+
+/* Video Seek Controls Styles */
+.seek-controls-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 12px;
+    margin: 12px 16px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.seek-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.seek-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    color: white;
+}
+
+.backward-btn {
+    background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+}
+
+.forward-btn {
+    background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+}
+
+.seek-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.seek-btn:active {
+    transform: translateY(0);
+}
+
+.seek-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.seek-text {
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.time-display {
+    font-size: 13px;
+    font-weight: 500;
+    color: #a0a0c0;
+    min-width: 40px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.current-time {
+    color: #8e2de2;
+}
+
+.total-time {
+    color: #00b4db;
+}
+
+.video-timeline {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #8e2de2 0%, #4a00e0 50%, #00b4db 100%);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+.timeline-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(142, 45, 226, 0.8),
+        0 0 20px rgba(0, 180, 219, 0.6);
+    cursor: pointer;
+    z-index: 2;
+    transition: left 0.1s linear;
+}
+
+/* If you still don't see it, try adding these debug styles: */
+.debug-seek-controls {
+    border: 2px solid red !important;
+    background: yellow !important;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .seek-controls-container {
+        margin: 10px 12px;
+        padding: 14px;
+    }
+
+    .seek-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+
+    .time-display {
+        font-size: 12px;
+        min-width: 35px;
+    }
+
+    .video-timeline {
+        height: 5px;
+    }
+
+    .timeline-thumb {
+        width: 14px;
+        height: 14px;
+    }
+}

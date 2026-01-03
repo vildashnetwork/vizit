@@ -1,0 +1,478 @@
+/* Container Styles */
+.nike-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* Header */
+.burberry-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tommy-title {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #2d742a, #2c6365);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Buttons */
+.gucci-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gucci-btn.primary {
+    background: linear-gradient(45deg, #205a26, #21484a);
+    color: white;
+}
+
+.gucci-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gucci-btn.ghost {
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+.gucci-btn.small {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.gucci-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 0, 80, 0.3);
+}
+
+.gucci-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Modal Overlay */
+.armani-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+}
+
+.fendi-modal {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Upload Component */
+.ralph-lauren-upload {
+    padding: 0;
+}
+
+.hermes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.givenchy-heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.valentino-content {
+    padding: 20px;
+}
+
+/* Dropzone */
+.chloe-dropzone {
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.chloe-dropzone:hover {
+    border-color: #ff0050;
+    background: rgba(255, 0, 80, 0.05);
+}
+
+.louis-input {
+    display: none;
+}
+
+.calvin-text {
+    font-size: 16px;
+    margin: 12px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.diesel-small {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Text Areas */
+.zara-caption-container {
+    margin-bottom: 20px;
+}
+
+.zara-caption {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.zara-caption:focus {
+    outline: none;
+    border-color: #ff0050;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.zara-hashtags {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+/* Preview */
+.saint-laurent-preview {
+    margin-bottom: 20px;
+}
+
+.ysl-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.kenzo-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bottega-video-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+
+.bvlgari-video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+.cartier-controls {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+/* Reels Feed */
+.puma-feed {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.puma-feed::-webkit-scrollbar {
+    display: none;
+}
+
+/* Reel Card */
+.adidas-reel {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.marc-jacobs-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fendi-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dolce-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%);
+}
+
+/* Reel Content */
+.balmain-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.prada-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chloe-details {
+    flex: 1;
+    max-width: 70%;
+}
+
+.balenciaga-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tommy-username {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.zara-caption-display {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.versace-hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stone-island-tag {
+    color: #00f2fe;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.stone-island-tag:hover {
+    text-decoration: underline;
+}
+
+/* Actions */
+.balenciaga-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.balenciaga-icons.large {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.prada-action {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.prada-action:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.prada-action.liked {
+    color: #ff0050;
+}
+
+.versace-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.versace-icon.user {
+    font-size: 32px;
+}
+
+.moschino-count {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Actions Row */
+.celine-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* Empty State */
+.diesel-empty {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.levis-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+}
+
+/* Loader */
+.burberry-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.versace-shimmer {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    background-size: 200% 100%;
+    animation: versace-shimmer 1.5s infinite;
+    border-radius: 12px;
+    height: 200px;
+}
+
+@keyframes versace-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chloe-details {
+        max-width: 100%;
+    }
+
+    .prada-sidebar {
+        position: absolute;
+        right: 20px;
+        bottom: 100px;
+    }
+
+    .balmain-content {
+        align-items: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .burberry-header {
+        padding: 12px 16px;
+    }
+
+    .tommy-title {
+        font-size: 20px;
+    }
+
+    .gucci-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .adidas-reel {
+        padding: 16px;
+    }
+
+    .balenciaga-icons {
+        gap: 12px;
+    }
+
+    .versace-icon {
+        font-size: 20px;
+    }
+}
