@@ -15,8 +15,8 @@ function MessageBubble({ message, type }) {
                     src={message.image}
                     alt="message attachment"
                     style={{
-                        maxWidth: '200px',
-                        maxHeight: '200px',
+                        maxWidth: '150px',
+                        maxHeight: '150px',
                         borderRadius: '8px',
                         display: 'block',
                         marginTop: '4px',

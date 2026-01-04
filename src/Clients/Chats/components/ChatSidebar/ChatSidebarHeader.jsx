@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ChatSidebarHeader({ setActiveTab }) {
+function ChatSidebarHeader({ setActiveTab, user }) {
 
     return (
         <div className="gbp-chat-sidebar-header">
@@ -8,11 +8,17 @@ function ChatSidebarHeader({ setActiveTab }) {
                 <div
                     className="gbp-chat-sidebar-header__avatar"
                     role="img"
+                    style={{
+                        backgroundImage: `url(${user?.profile})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}
                     aria-label="User avatar"
                 >
-                    JS
+
                 </div>
-                <span className="gbp-chat-sidebar-header__name">John Smith</span>
+                <span className="gbp-chat-sidebar-header__name">{user?.name}</span>
             </div>
             <div className="gbp-chat-sidebar-header__actions">
                 <button

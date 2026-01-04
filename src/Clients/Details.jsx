@@ -464,7 +464,7 @@ function PropertyDetail({ propertyId, currentUser, OwnerId }) {
                     }}
 
                 >
-                    Chat With Owner
+                    Chat
                 </button>
 
             </Container>

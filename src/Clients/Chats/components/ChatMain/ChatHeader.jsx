@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import VideoCall from "./Videocall/Videocall"
 
-function ChatHeader({ chat, isMobileView, onBack }) {
+function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
+    // user
+
+    const [online, setOnline] = useState(false);
+
+    useEffect(() => {
+        setOnline(onlineUsers.includes(chat._id));
+    }, [chat._id, onlineUsers]);
+
     return (
         <div className="gbp-chat-header">
             {isMobileView && (
@@ -12,20 +21,31 @@ function ChatHeader({ chat, isMobileView, onBack }) {
                     ←
                 </button>
             )}
+            {/* 
+            <VideoCall
+                user={user}
+                activeUserEmail={chat.email}
+            /> */}
+
 
             <div className="gbp-chat-header__info">
                 <div
                     className="gbp-chat-header__avatar"
                     role="img"
+                    style={{
+                        backgroundImage: `url(${chat?.profile})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}
                     aria-label={`${chat.name}'s avatar`}
                 >
-                    {chat.avatarText}
+
                 </div>
                 <div className="gbp-chat-header__details">
                     <h2 className="gbp-chat-header__name">{chat.name}</h2>
-                    <div className="gbp-chat-header__status">
-                        {chat.online ? 'Online' : 'Last seen recently'}
-                    </div>
+                    {online ? <span className="nok-chat-list-item__time" style={{ color: "#0a6114" }}>online</span> :
+                        <span className="nok-chat-list-item__time" style={{ color: "#fd0d55" }}>offline</span>}
                 </div>
             </div>
 

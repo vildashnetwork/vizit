@@ -1,7 +1,12 @@
+
+
+
+// ChatList.jsx
 import React from 'react';
 import ChatListItem from './ChatListItem';
 
-function ChatList({ chats, activeChatId, onChatSelect }) {
+function ChatList({ chats = [], activeChatId, onChatSelect, isOnline, user, onlineUsers }) {
+    // Show empty state if no chats
     if (chats.length === 0) {
         return (
             <div
@@ -23,14 +28,20 @@ function ChatList({ chats, activeChatId, onChatSelect }) {
             aria-label="Chat list"
             tabIndex={0}
         >
-            {chats.map(chat => (
-                <ChatListItem
-                    key={chat.id}
-                    chat={chat}
-                    isActive={chat.id === activeChatId}
-                    onSelect={() => onChatSelect(chat.id)}
-                />
-            ))}
+            {chats.map(chat => {
+                // Use _id consistently for selection
+                const chatId = chat._id || chat.id;
+                return (
+                    <ChatListItem
+                        key={chatId}
+                        chat={chat}
+                        isActive={chatId === activeChatId}
+                        onSelect={() => onChatSelect(chatId)}
+                        isOnline={isOnline}
+                        onlineUsers={onlineUsers}
+                    />
+                );
+            })}
         </div>
     );
 }

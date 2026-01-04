@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 import React, { useRef, useEffect } from 'react';
 import ChatHeader from './ChatHeader';
 import ChatMessages from './ChatMessages';
@@ -11,29 +18,42 @@ function ChatMain({
     isMobileView,
     isVisible,
     onBack,
-    onSendMessage
+    onSendMessage,
+    onlineUsers,
+    user
 }) {
     const messagesEndRef = useRef(null);
 
+    // Scroll to bottom on new messages
     useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-
-    const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+    }, [messages]);
 
     if (!chat) {
         return (
-            <div className={`gbp-chat-main ${isVisible ? 'gbp-chat-main--visible' : 'gbp-chat-main--hidden'}`}>
+            <div
+                className={`gbp-chat-main ${isVisible ? 'gbp-chat-main--visible' : 'gbp-chat-main--hidden'}`}
+            >
                 <ChatEmptyState />
             </div>
         );
     }
 
-    const handleSendMessage = (text) => {
-        onSendMessage(text);
+    // const handleSendMessage = (text, imageFile) => {
+    //     if (!text.trim() && !imageFile) return;
+    //     onSendMessage(text, imageFile); // pass both
+    // };
+
+
+    const handleSendMessage = ({ text = '', imageFile = null, videoFile = null }) => {
+        // Require at least one type of content
+        if (!text.trim() && !imageFile && !videoFile) return;
+
+        // Pass all data to the parent handler
+        onSendMessage({ text, imageFile, videoFile });
     };
+
+
 
     return (
         <div
@@ -41,17 +61,9 @@ function ChatMain({
             role="main"
             aria-label="Chat conversation"
         >
-            <ChatHeader
-                chat={chat}
-                isMobileView={isMobileView}
-                onBack={onBack}
-            />
+            <ChatHeader user={user} chat={chat} isMobileView={isMobileView} onBack={onBack} onlineUsers={onlineUsers} />
 
-            <ChatMessages
-                messages={messages}
-                loading={loading}
-                messagesEndRef={messagesEndRef}
-            />
+            <ChatMessages messages={messages} loading={loading} messagesEndRef={messagesEndRef} myUserId={user?._id} />
 
             <ChatInput onSend={handleSendMessage} />
         </div>

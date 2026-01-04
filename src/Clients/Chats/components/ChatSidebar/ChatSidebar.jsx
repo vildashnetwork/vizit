@@ -1,36 +1,49 @@
-import React, { useState } from 'react';
+
+
+// ChatSidebar.jsx
+import React, { useState, useMemo } from 'react';
 import ChatSidebarHeader from './ChatSidebarHeader';
 import ChatSearch from './ChatSearch';
 import ChatList from './ChatList';
 import ChatSidebarSkeleton from './ChatSidebarSkeleton';
 
 function ChatSidebar({
-    chats,
+    chats = [],
     activeChatId,
-    loading,
-    isVisible,
+    loading = false,
+    isVisible = true,
     onChatSelect,
-    setActiveTab
+    setActiveTab,
+    user,
+    isOnline,
+    onlineUsers
 }) {
     const [searchQuery, setSearchQuery] = useState('');
 
-    const filteredChats = chats.filter(chat =>
-        chat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        chat.lastMessage?.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    // Filter chats based on search query (name or last message)
+    const filteredChats = useMemo(() => {
+        const query = searchQuery.trim().toLowerCase();
+        if (!query) return chats;
+
+        return chats.filter(chat =>
+            chat.name.toLowerCase().includes(query) ||
+            chat.lastMessage?.toLowerCase().includes(query)
+        );
+    }, [chats, searchQuery]);
 
     return (
-        <div
+        <aside
             className={`eur-chat-sidebar ${isVisible ? 'eur-chat-sidebar--visible' : 'eur-chat-sidebar--hidden'}`}
             role="complementary"
             aria-label="Chat list sidebar"
         >
-            <ChatSidebarHeader setActiveTab={setActiveTab} />
-            <ChatSearch
-                value={searchQuery}
-                onChange={setSearchQuery}
-            />
+            {/* Header with user info and optional settings */}
+            <ChatSidebarHeader setActiveTab={setActiveTab} user={user} />
 
+            {/* Search input */}
+            <ChatSearch value={searchQuery} onChange={setSearchQuery} />
+
+            {/* Chat list or skeleton loader */}
             {loading ? (
                 <ChatSidebarSkeleton count={5} />
             ) : (
@@ -38,9 +51,12 @@ function ChatSidebar({
                     chats={filteredChats}
                     activeChatId={activeChatId}
                     onChatSelect={onChatSelect}
+                    isOnline={isOnline}
+                    user={user}
+                    onlineUsers={onlineUsers}
                 />
             )}
-        </div>
+        </aside>
     );
 }
 
