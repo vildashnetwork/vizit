@@ -24,10 +24,7 @@ function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
             {console.log("my chat id", chat?._id)
             }
 
-            <VideoCall
-                remoteUserId={chat?._id}
 
-            />
 
 
             <div className="gbp-chat-header__info">
@@ -52,13 +49,11 @@ function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
             </div>
 
             <div className="gbp-chat-header__actions">
-                <button
-                    className="gbp-chat-sidebar-header__icon"
-                    aria-label="Search conversation"
-                    role="button"
-                >
-                    <ion-icon name="search-outline"></ion-icon>
-                </button>
+
+                <VideoCall
+                    remoteUserId={chat?._id}
+
+                />
                 <button
                     className="gbp-chat-sidebar-header__icon"
                     aria-label="Menu"
