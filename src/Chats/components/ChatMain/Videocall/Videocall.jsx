@@ -1,115 +1,152 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+import React, { useRef, useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 const SOCKET_SERVER_URL = "https://vizit-backend-hubw.onrender.com";
 
 const socket = io(SOCKET_SERVER_URL, {
-    query: { userId: localStorage.getItem('userId') }
+    query: { userId: localStorage.getItem("userId") },
 });
 
 const VideoCall = ({ remoteUserId }) => {
     const localVideoRef = useRef(null);
     const remoteVideoRef = useRef(null);
-    const pcRef = useRef(null);
+    const pcRef = useRef(null); // PeerConnection reference
     const [callActive, setCallActive] = useState(false);
 
+    // store local stream globally
+    const localStreamRef = useRef(null);
+
     useEffect(() => {
-        // get local media
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-            .then(stream => {
-                localVideoRef.current.srcObject = stream;
-                pcRef.current = new RTCPeerConnection();
-
-                // add tracks to peer connection
-                stream.getTracks().forEach(track => pcRef.current.addTrack(track, stream));
-
-                // remote stream
-                pcRef.current.ontrack = (event) => {
-                    remoteVideoRef.current.srcObject = event.streams[0];
-                };
-
-                // ICE candidates
-                pcRef.current.onicecandidate = (event) => {
-                    if (event.candidate) {
-                        socket.emit('peer:nego:needed', {
-                            toUserId: remoteUserId,
-                            offer: JSON.stringify(pcRef.current.localDescription),
-                            roomId: null
-                        });
-                    }
-                };
+        // initialize media
+        const initMedia = async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: true,
+                audio: true,
             });
+            localStreamRef.current = stream;
+            if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+
+            // initialize PeerConnection
+            pcRef.current = new RTCPeerConnection();
+
+            // add tracks to connection
+            stream.getTracks().forEach((track) =>
+                pcRef.current.addTrack(track, stream)
+            );
+
+            // receive remote stream
+            pcRef.current.ontrack = (event) => {
+                remoteVideoRef.current.srcObject = event.streams[0];
+            };
+
+            // handle ICE candidates
+            pcRef.current.onicecandidate = (event) => {
+                if (event.candidate) {
+                    // send candidate to the other peer
+                    socket.emit("peer:nego:needed", {
+                        toUserId: remoteUserId,
+                        offer: JSON.stringify(pcRef.current.localDescription),
+                        roomId: null,
+                    });
+                }
+            };
+        };
+
+        initMedia();
 
         /** ===== SOCKET EVENTS ===== **/
 
-        socket.on('incoming:call', async ({ fromUserId, offer }) => {
+        // incoming call
+        socket.on("incoming:call", async ({ fromUserId, offer }) => {
             setCallActive(true);
+            if (!pcRef.current) return;
             await pcRef.current.setRemoteDescription(JSON.parse(offer));
             const answer = await pcRef.current.createAnswer();
             await pcRef.current.setLocalDescription(answer);
-
-            socket.emit('call:accepted', {
+            socket.emit("call:accepted", {
                 toUserId: fromUserId,
                 answer: JSON.stringify(answer),
-                roomId: null
+                roomId: null,
             });
         });
 
-        socket.on('call:accepted', async ({ fromUserId, answer }) => {
+        // call accepted
+        socket.on("call:accepted", async ({ fromUserId, answer }) => {
             setCallActive(true);
+            if (!pcRef.current) return;
             await pcRef.current.setRemoteDescription(JSON.parse(answer));
         });
 
-        socket.on('peer:nego:needed', async ({ fromUserId, offer }) => {
+        // negotiation needed (ICE/offer)
+        socket.on("peer:nego:needed", async ({ fromUserId, offer }) => {
+            if (!pcRef.current) return;
             await pcRef.current.setRemoteDescription(JSON.parse(offer));
             const answer = await pcRef.current.createAnswer();
             await pcRef.current.setLocalDescription(answer);
-            socket.emit('peer:nego:done', {
+            socket.emit("peer:nego:done", {
                 toUserId: fromUserId,
                 answer: JSON.stringify(answer),
-                roomId: null
+                roomId: null,
             });
         });
 
-        socket.on('peer:nego:final', async ({ fromUserId, answer }) => {
+        // negotiation final
+        socket.on("peer:nego:final", async ({ fromUserId, answer }) => {
+            if (!pcRef.current) return;
             await pcRef.current.setRemoteDescription(JSON.parse(answer));
         });
 
-        socket.on('call:end', () => {
-            setCallActive(false);
-            pcRef.current.close();
-            pcRef.current = null;
+        // call ended
+        socket.on("call:end", () => {
+            endCall();
         });
 
         return () => {
-            socket.off('incoming:call');
-            socket.off('call:accepted');
-            socket.off('peer:nego:needed');
-            socket.off('peer:nego:final');
-            socket.off('call:end');
+            socket.off("incoming:call");
+            socket.off("call:accepted");
+            socket.off("peer:nego:needed");
+            socket.off("peer:nego:final");
+            socket.off("call:end");
         };
     }, [remoteUserId]);
 
+    // start call
     const startCall = async () => {
+        if (!pcRef.current) return;
         const offer = await pcRef.current.createOffer();
         await pcRef.current.setLocalDescription(offer);
-        socket.emit('user:call', {
+        socket.emit("user:call", {
             toUserId: remoteUserId,
-            offer: JSON.stringify(offer)
+            offer: JSON.stringify(offer),
         });
+        setCallActive(true);
     };
 
+    // end call
     const endCall = () => {
-        socket.emit('call:end', { toUserId: remoteUserId, roomId: null });
         setCallActive(false);
-        pcRef.current.close();
-        pcRef.current = null;
+        if (pcRef.current) {
+            pcRef.current.close();
+            pcRef.current = null;
+        }
+        socket.emit("call:end", { toUserId: remoteUserId, roomId: null });
     };
 
     return (
         <div>
-            <video ref={localVideoRef} autoPlay muted style={{ width: '200px' }} />
-            <video ref={remoteVideoRef} autoPlay style={{ width: '200px' }} />
+            <video
+                ref={localVideoRef}
+                autoPlay
+                muted
+                playsInline
+                style={{ width: "200px" }}
+            />
+            <video
+                ref={remoteVideoRef}
+                autoPlay
+                playsInline
+                style={{ width: "200px" }}
+            />
             {!callActive && <button onClick={startCall}>Call</button>}
             {callActive && <button onClick={endCall}>End Call</button>}
         </div>
