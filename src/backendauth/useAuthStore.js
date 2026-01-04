@@ -5,7 +5,7 @@ import axiosInstance from "./axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const BASE_URL = "http://localhost:6000";
+const BASE_URL = "https://vizit-backend-hubw.onrender.com";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,

@@ -104,7 +104,7 @@ export default function UserAuthLanding() {
         setTimeout(() => {
             setLoading(false);
             localStorage.setItem("role", "user");
-            setMessage({ type: "success", text: "Account created — demo role saved." });
+            setMessage({ type: "success", text: "Account created role saved." });
             resetForm();
             setMode("register");
 
