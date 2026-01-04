@@ -955,7 +955,7 @@ const HousePlatter = ({ user }) => {
 
 
 
-                                    <Stack direction="row" spacing={2}>
+                                    <Stack direction="row" spacing={2} style={{ marginBottom: 40 }}>
                                         <Tooltip title="Schedule a private viewing">
                                             <Button
                                                 fullWidth
