@@ -144,7 +144,9 @@ const ReelsContainer = ({ setActiveTab }) => {
             {/* Scroll indicator */}
 
             <div className="papad-scroll-indicator">
-                <button className="papad-scroll-btn down" style={{ background: "transparent", border: "none" }} onClick={() => setActiveTab("properties")}>
+                <button className="papad-scroll-btn down"
+                    style={{ background: "transparent", border: "none" }}
+                    onClick={() => setActiveTab("feed")}>
                     <span className="korma-icon">c</span>
 
                 </button>
