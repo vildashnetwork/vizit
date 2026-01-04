@@ -713,11 +713,7 @@
     }
 }
 
-/* Focus styles for accessibility */
-button:focus {
-    outline: 3px solid #4cd964;
-    outline-offset: 2px;
-}
+
 
 /* Landscape mode optimization */
 @media (orientation: landscape) and (max-height: 600px) {
