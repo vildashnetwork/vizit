@@ -35,7 +35,7 @@ function AdminChatApp({ setActiveTab }) {
 
             if (res.status === 200) {
                 setUser(res.data.res);
-                localStorage.setItem('userId', user?._id)
+
             }
 
         } catch (error) {
@@ -58,6 +58,7 @@ function AdminChatApp({ setActiveTab }) {
                 setFilteredUsers(filteredUsers);
                 setFilteredOwners(filteredOwners);
                 setChats([...filteredOwners, ...filteredUsers]);
+                localStorage.setItem('userId', userId)
             }
         } catch (error) {
             console.error("Failed to fetch users:", error);
