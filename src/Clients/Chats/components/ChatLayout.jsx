@@ -50,7 +50,6 @@ function ChatLayout({
     const handleBackToChats = () => setSidebarVisible(true);
 
     const activeChat = chats.find(chat => chat._id === activeChatId);
-
     return (
         <div className="usd-chat-layout">
             <ChatSidebar

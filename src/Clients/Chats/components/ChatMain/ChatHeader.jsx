@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import VideoCall from "./Videocall/Videocall"
 // import VideoCall from "./Videocall/Videocall"
 
 function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
@@ -50,13 +51,10 @@ function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
             </div>
 
             <div className="gbp-chat-header__actions">
-                <button
-                    className="gbp-chat-sidebar-header__icon"
-                    aria-label="Search conversation"
-                    role="button"
-                >
-                    <ion-icon name="search-outline"></ion-icon>
-                </button>
+                <VideoCall
+                    remoteUserId={chat?._id}
+                    remoteUserName={chat.name}
+                />
                 <button
                     className="gbp-chat-sidebar-header__icon"
                     aria-label="Menu"

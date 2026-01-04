@@ -59,6 +59,8 @@ function AdminChatApp({ setActiveTab }) {
                 setFilteredUsers(filteredUsers);
                 setFilteredOwners(filteredOwners);
                 setChats([...filteredOwners, ...filteredUsers]);
+                localStorage.setItem('userId', userId)
+
             }
         } catch (error) {
             console.error("Failed to fetch users:", error);
