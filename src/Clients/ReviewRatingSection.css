@@ -29,7 +29,8 @@
     border-radius: 24px;
     padding: 48px 56px;
     margin: 60px auto;
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    width: 100% !important;
     box-shadow: var(--box-shadow);
     border: 1px solid var(--mozart-light);
     position: relative;
@@ -781,7 +782,11 @@
 @media (max-width: 1024px) {
     .mozart-review-section {
         padding: 40px;
-        margin: 40px 20px;
+        /* margin: 40px 20px; */
+        margin-top: 40px !important;
+        /* margin: 0 !important; */
+        /* padding: 0 !important; */
+        width: 100% !important;
     }
 
     .mozart-review-section h4 {
@@ -802,6 +807,7 @@
         padding: 32px 24px;
         margin: 30px 16px;
         border-radius: 20px;
+        width: 100% !important;
     }
 
     .mozart-review-section h4 {

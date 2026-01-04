@@ -69,7 +69,7 @@ export default function ReviewSection({
     const [submitting, setSubmitting] = useState(false);
     const [isrightuser, setisrightuser] = useState(false);
 
-    const API_BASE = "http://localhost:6300/api/house/houses";
+    const API_BASE = "https://vizit-backend-hubw.onrender.com/api/house/houses";
 
     console.log("User", currentUser);
 
@@ -100,7 +100,7 @@ export default function ReviewSection({
 
 
                 const res = await axios.post(
-                    `http://localhost:6300/api/house/check/${propertyId}/${currentUser._id}`
+                    `https://vizit-backend-hubw.onrender.com/api/house/check/${propertyId}/${currentUser._id}`
                 );
 
                 setcheckadmin(Boolean(res.data.isOwner));
