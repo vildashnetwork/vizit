@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import VideoCall from "./Videocall/Videocall"
+import VideoCall from "./Videocall/Videocall"
 
 function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
     // user
@@ -21,11 +21,13 @@ function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
                     ←
                 </button>
             )}
-            {/* 
+            {console.log("my chat id", chat?._id)
+            }
+
             <VideoCall
-                user={user}
-                activeUserEmail={chat.email}
-            /> */}
+                remoteUserId={chat?._id}
+
+            />
 
 
             <div className="gbp-chat-header__info">
