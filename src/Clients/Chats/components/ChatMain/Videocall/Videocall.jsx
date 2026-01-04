@@ -195,13 +195,34 @@ const VideoCallPage = ({ remoteUserId, remoteUserName }) => {
 
             {callActive && (
                 <div className="video-call-interface">
-                    <div className="remote-video-container">
+                    {/* <div className="remote-video-container">
                         {remoteStream && <VideoPlayer stream={remoteStream} name={remoteUserName} />}
                     </div>
 
                     <div className="local-video-container">
                         {myStream && (
                             <VideoPlayer stream={myStream} name={"Me"} isSmall />
+                        )}
+                    </div> */}
+
+                    <div className="remote-video-container">
+                        {remoteStream && (
+                            <VideoPlayer
+                                stream={remoteStream}
+                                name={remoteUserName}
+                                isRemote={true}
+                            />
+                        )}
+                    </div>
+
+                    <div className="local-video-container">
+                        {myStream && (
+                            <VideoPlayer
+                                stream={myStream}
+                                name="Me"
+                                isRemote={false}
+                                isSmall
+                            />
                         )}
                     </div>
 

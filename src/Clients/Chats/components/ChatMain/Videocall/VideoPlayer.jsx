@@ -54,7 +54,6 @@
 // export default VideoPlayer;
 
 
-
 import React, { useEffect, useRef } from "react";
 
 const VideoPlayer = ({
@@ -70,20 +69,20 @@ const VideoPlayer = ({
     useEffect(() => {
         if (!stream) return;
 
-        // Attach stream to video
         if (videoRef.current) {
             videoRef.current.srcObject = stream;
         }
 
-        // Attach stream to audio ONLY for remote user
         if (isRemote && audioRef.current) {
             audioRef.current.srcObject = stream;
             audioRef.current.muted = false;
+            audioRef.current.volume = 1;
 
-            // Required for some browsers
             audioRef.current
                 .play()
-                .catch(err => console.warn("Audio autoplay blocked:", err));
+                .catch(err =>
+                    console.warn("Remote audio autoplay blocked:", err)
+                );
         }
     }, [stream, isRemote]);
 
@@ -102,13 +101,12 @@ const VideoPlayer = ({
                         ref={videoRef}
                         autoPlay
                         playsInline
-                        muted={!isRemote}   // 🔑 Local muted, remote NOT muted
+                        muted={!isRemote}
                         className="video-element"
                     />
                 )}
             </div>
 
-            {/* 🔊 Dedicated audio element for REMOTE stream */}
             {isRemote && <audio ref={audioRef} autoPlay playsInline />}
 
             <div className="video-overlay">
