@@ -52,7 +52,7 @@ function ChatHeader({ chat, isMobileView, onBack, onlineUsers }) {
 
                 <VideoCall
                     remoteUserId={chat?._id}
-
+                    remoteUserName={chat.name}
                 />
                 <button
                     className="gbp-chat-sidebar-header__icon"
