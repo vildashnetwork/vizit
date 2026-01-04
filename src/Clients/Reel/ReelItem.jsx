@@ -37,7 +37,7 @@
 //     const getall = async () => {
 //         try {
 //             const res = await axios.get(
-//                 `http://localhost:6300/api/reels/reel/${reel?._id}`
+//                 `https://vizit-backend-hubw.onrender.com/api/reels/reel/${reel?._id}`
 //             );
 
 //             if (res.status === 200) {
@@ -109,7 +109,7 @@
 
 //             // API call to share/unshare
 //             const response = await axios.post(
-//                 `http://localhost:6300/api/like/reel/${reel._id}/share`,
+//                 `https://vizit-backend-hubw.onrender.com/api/like/reel/${reel._id}/share`,
 //                 {
 //                     id: user._id,
 //                     name: user.name
@@ -285,7 +285,7 @@ const ReelItem = ({ reel, onLike, user, onReelDeleted }) => {
     const getall = async () => {
         try {
             const res = await axios.get(
-                `http://localhost:6300/api/reels/reel/${reel?._id}`
+                `https://vizit-backend-hubw.onrender.com/api/reels/reel/${reel?._id}`
             );
 
             const { likes = [], comments = [], shares = [] } = res.data.reel || {};
