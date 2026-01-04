@@ -112,7 +112,10 @@ const VideoCall = ({ remoteUserId }) => {
 
     return (
         <div>
+            <p>me</p>
             <video ref={localVideoRef} autoPlay muted playsInline style={{ width: "200px" }} />
+
+            <p>romote</p>
             <video ref={remoteVideoRef} autoPlay playsInline style={{ width: "200px" }} />
             {!callActive && <button onClick={startCall}>Call</button>}
             {callActive && <button onClick={endCall}>End Call</button>}
