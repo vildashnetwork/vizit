@@ -104,7 +104,13 @@ function ChatInput({ onSend }) {
             {/* Preview attached image */}
             {imageFile && (
                 <div className="jpy-chat-input__image-preview">
-                    <img src={URL.createObjectURL(imageFile)} alt="preview" />
+                    <img src={URL.createObjectURL(imageFile)} alt="preview" style={{
+                        maxWidth: '150px',
+                        maxHeight: '150px',
+                        borderRadius: '8px',
+                        display: 'block',
+                        marginTop: '4px',
+                    }} />
                     <button type="button" onClick={() => setImageFile(null)}>✕</button>
                 </div>
             )}
