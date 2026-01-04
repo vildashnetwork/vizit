@@ -954,18 +954,20 @@ const HousePlatter = ({ user }) => {
                                     >{allowsave ? "saving.." : "save"}</button>
 
 
-                                    {/* Primary Actions */}
+
                                     <Stack direction="row" spacing={2}>
                                         <Tooltip title="Schedule a private viewing">
                                             <Button
                                                 fullWidth
-                                                size="large"
+                                                size="small"
                                                 variant="contained"
                                                 startIcon={<EventAvailableIcon />}
                                                 sx={{
                                                     borderRadius: "14px",
                                                     textTransform: "none",
                                                     fontWeight: 600,
+                                                    fontSize: 12,
+                                                    padding: "6px 12px",
                                                     background:
                                                         "linear-gradient(135deg, #0f2027, #203a43, #2c5364)"
                                                 }}
@@ -978,13 +980,15 @@ const HousePlatter = ({ user }) => {
                                         <Tooltip title="Download property brochure">
                                             <Button
                                                 fullWidth
-                                                size="large"
+                                                size="small"
                                                 variant="outlined"
                                                 startIcon={<ion-icon name="trash-bin-outline"></ion-icon>}
                                                 sx={{
                                                     borderRadius: "14px",
                                                     textTransform: "none",
                                                     fontWeight: 600,
+                                                    fontSize: 12,
+                                                    padding: "6px 12px",
                                                     borderColor: "rgba(255,255,255,0.3)",
                                                     color: "#fff"
                                                 }}
