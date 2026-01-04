@@ -201,7 +201,7 @@ const VideoCallPage = ({ remoteUserId, remoteUserName }) => {
 
                     <div className="local-video-container">
                         {myStream && (
-                            <VideoPlayer stream={myStream} name={"Me"} muted isSmall />
+                            <VideoPlayer stream={myStream} name={"Me"} isSmall />
                         )}
                     </div>
 
